@@ -37,6 +37,7 @@ class mono (
     owner           => $::boxen_user,
     group           => 'staff',
     mode            => '0644',
+    extrapaths      => [ '/opt/boxen/homebrew/bin' ]
   } ->
   package { $pkgname:
     provider => 'apple',
