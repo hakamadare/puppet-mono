@@ -9,6 +9,7 @@
 class mono (
   $version     = '3.4.0',
   $development = false,
+  $cachedir    = '/opt/boxen/cache',
 ) {
   validate_bool($development)
 
@@ -19,14 +20,14 @@ class mono (
 
   $pkgname = "MonoFramework-${flavor}-${version}.macos10.xamarin.x86"
   $pkgpath = "http://download.mono-project.com/archive/${version}/macos-10-x86/${pkgname}.pkg"
-  $pkgcache = "${boxen::config::cachedir}/${pkgname}.pkg"
+  $pkgcache = "${cachedir}/${pkgname}.pkg"
 
   fetchfile { $pkgcache:
     downloadurl     => $pkgpath,
     downloadfile    => "${pkgname}.pkg",
     downloadto      => '/tmp',
     desintationpath => $pkgcache,
-    owner           => $boxen_user,
+    owner           => $::boxen_user,
     group           => 'staff',
     mode            => '0644',
   } ->
