@@ -25,7 +25,7 @@ class mono (
     downloadurl     => $pkgpath,
     downloadfile    => "${pkgname}.pkg",
     downloadto      => '/tmp',
-    destinationpath => $pkgcache,
+    desintationpath => $pkgcache,
     owner           => $boxen_user,
     group           => 'staff',
     mode            => '0644',
