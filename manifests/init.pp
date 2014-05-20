@@ -19,9 +19,14 @@ class mono (
 
   $pkgname = "MonoFramework-${flavor}-${version}.macos10.xamarin.x86"
   $pkgpath = "http://download.mono-project.com/archive/${version}/macos-10-x86/${pkgname}.pkg"
+  $pkgcache = "${boxen::config::cachedir}/${pkgname}.pkg"
 
+  file { $pkgcache:
+    ensure => 'present',
+    source => $pkgpath,
+  } ->
   package { $pkgname:
     provider => 'apple',
-    source   => $pkgpath,
+    source   => $pkgcache,
   }
 }
