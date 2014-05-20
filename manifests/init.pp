@@ -32,7 +32,7 @@ class mono (
   fetchfile { $pkgcache:
     downloadurl     => $pkgpath,
     downloadfile    => "${pkgname}.pkg",
-    downloadto      => '/tmp',
+    downloadto      => '/tmp/',
     desintationpath => $pkgcache,
     owner           => $::boxen_user,
     group           => 'staff',
