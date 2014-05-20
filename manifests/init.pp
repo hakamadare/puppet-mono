@@ -18,7 +18,7 @@ class mono (
   }
 
   $pkgname = "MonoFramework-${flavor}-${version}.macos10.xamarin.x86"
-  $pkgpath = "http://download.mono-project.com/archive/${version}/macos-10-x86/${pkg}.pkg"
+  $pkgpath = "http://download.mono-project.com/archive/${version}/macos-10-x86/${pkgname}.pkg"
 
   package { $pkgname:
     provider => 'apple',
