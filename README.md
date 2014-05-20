@@ -14,7 +14,9 @@ class { 'mono':
 ## Required Puppet Modules
 
 * `boxen`
+* `homebrew`
 * `stdlib`
+* `runthebusiness/fetchfile`
 
 ## Development
 
