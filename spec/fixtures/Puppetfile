@@ -4,3 +4,4 @@
 forge "http://forge.puppetlabs.com"
 
 mod 'puppetlabs/stdlib', '4.2.1'
+mod 'runthebusiness/fetchfile', '1.0.0'

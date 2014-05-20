@@ -15,6 +15,7 @@ class { 'mono':
 
 * `boxen`
 * `stdlib`
+* `runthebusiness/fetchfile`
 
 ## Development
 

@@ -21,9 +21,14 @@ class mono (
   $pkgpath = "http://download.mono-project.com/archive/${version}/macos-10-x86/${pkgname}.pkg"
   $pkgcache = "${boxen::config::cachedir}/${pkgname}.pkg"
 
-  file { $pkgcache:
-    ensure => 'present',
-    source => $pkgpath,
+  fetchfile { $pkgcache:
+    downloadurl     => $pkgpath,
+    downloadfile    => "${pkgname}.pkg",
+    downloadto      => '/tmp',
+    destinationpath => $pkgcache,
+    owner           => $boxen_user,
+    group           => 'staff',
+    mode            => '0644',
   } ->
   package { $pkgname:
     provider => 'apple',
