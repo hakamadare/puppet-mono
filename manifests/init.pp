@@ -28,20 +28,24 @@ class mono (
     install_options => [
       '--enable-iri',
     ],
-  } ->
-  fetchfile { $pkgcache:
-    downloadurl     => $pkgpath,
-    downloadfile    => "${pkgname}.pkg",
-    downloadto      => '/tmp/',
-    desintationpath => $pkgcache,
-    owner           => $::boxen_user,
-    group           => 'staff',
-    mode            => '0644',
-    extrapaths      => [ '/opt/boxen/homebrew/bin' ],
-    compression     => 'uncompressed',
-  } ->
-  package { $pkgname:
-    provider => 'apple',
-    source   => $pkgcache,
+  }
+
+  if ( $::mono_installed == "false" ) {
+    fetchfile { $pkgcache:
+      downloadurl     => $pkgpath,
+      downloadfile    => "${pkgname}.pkg",
+      downloadto      => '/tmp/',
+      desintationpath => $pkgcache,
+      owner           => $::boxen_user,
+      group           => 'staff',
+      mode            => '0644',
+      extrapaths      => [ '/opt/boxen/homebrew/bin' ],
+      compression     => 'uncompressed',
+      require         => Package['wget'],
+    } ->
+    package { $pkgname:
+      provider => 'apple',
+      source   => $pkgcache,
+    }
   }
 }
